@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Times Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+  <body>
+    <section class="start">
+      <p>
+        Welcome to the Tables Quiz! 🌟 Enter a number to choose table. Answer
+        each question in 10 seconds! If you're unsure, we'll show the answer.
+        Click 'Continue' after. At the end, see your score. Ready for fun
+        learning? Let's go! 🚀🎉
+      </p>
+      <div class="table-container">
+        <label for="table">Choose table</label>
+        <input type="number" name="table" id="table" />
+      </div>
+      <button class="start-button">Start</button>
+    </section>
+    <section class="question">
+      <div>
+        <span class="numberLeft"></span>
+        <span class="operation">x</span>
+        <span class="numberRight"></span>
+      </div>
+      <div>
+        <input class="answer" type="text" />
+      </div>
+      <section class="timeout">
+        <span class="correct-answer"></span>
+        <button class="next-button">Continue</button>
+      </section>
+    </section>
+    <section class="pass">
+      <p>Congratulations! You passed!</p>
+      <p class="score-pass"></p>
+    </section>
+    <section class="fail">
+      <p>Try again!</p>
+      <p class="score-fail"></p>
+      <button class="try-again-button">Try again</button>
+    </section>
+    <script type="module" src="quiz.js"></script>
+  </body>
+</html>

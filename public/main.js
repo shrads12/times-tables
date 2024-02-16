@@ -2,6 +2,8 @@ const shuffledArray = shuffleArray();
 let currentIndex = 0;
 let score = 0;
 let timeout;
+const TIME_LIMIT = 10;
+let count = TIME_LIMIT;
 const numberLeftEl = document.querySelector(".numberLeft");
 const numberRightEl = document.querySelector(".numberRight");
 const correctAnswerEl = document.querySelector(".correct-answer");
@@ -9,6 +11,7 @@ const timeoutEl = document.querySelector(".timeout");
 const answerEl = document.querySelector(".answer");
 const tableEl = document.querySelector("#table");
 const startButtonEl = document.querySelector(".start-button");
+const timerEl = document.querySelector(".timer");
 
 tableEl.addEventListener("change", (event) => {
   numberRightEl.innerHTML = event.target.value;
@@ -41,9 +44,22 @@ tryAgainButtonEl.addEventListener("click", () => {
 });
 
 function startTimer() {
-  timeout = setTimeout(() => {
+  if (count >= 0) {
+    // timerEl.style.display = "flex";
+    // timerEl.innerHTML = count;
+    timeout = setTimeout(startTimer, 1000);
+    count--;
+  } else {
+    // timerEl.style.display = "none";
     checkAnswer();
-  }, 10000);
+    count = 10;
+  }
+}
+
+function clearTimer() {
+  clearTimeout(timeout);
+  timerEl.style.display = "none";
+  count = 10;
 }
 
 function start() {
@@ -98,7 +114,7 @@ function isCorrect(answer, left, right) {
 }
 
 function checkAnswer() {
-  clearTimeout(timeout);
+  clearTimer();
   const answer = answerEl.value;
   const answerIsCorrect = isCorrect(
     answer,
